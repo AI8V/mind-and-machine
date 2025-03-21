@@ -1,246 +1,213 @@
-/**
- * Educational Content Enhancement Script
- * Provides interactive features for Bootstrap-based educational articles
- * Compatible with Bootstrap 5
- */
-
-document.addEventListener('DOMContentLoaded', function() {
-  const mainElement = document.querySelector('main');
+// Enhanced interactions for Bootstrap-based educational article
+document.addEventListener('DOMContentLoaded', () => {
+  const mainElement = document.querySelector('main.container');
   if (!mainElement) return;
 
-  // Initialize all features
-  initSmoothScrolling();
-  initFAQAccordion();
-  createBackToTopButton();
-  initImageLightbox();
-  initScrollAnimations();
-
-  /**
-   * Smooth scrolling for Table of Contents links
-   */
+  // Smooth scrolling with ScrollSpy integration
   function initSmoothScrolling() {
-    const tocLinks = mainElement.querySelectorAll('a[href^="#"]');
+    const links = mainElement.querySelectorAll('a[href^="#"]');
     
-    tocLinks.forEach(link => {
+    links.forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (!targetId || targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (!targetElement) return;
-        
-        // Calculate offset to account for fixed headers if present
-        const offset = 20;
-        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
-        
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        });
-        
-        // Update URL without scrolling
-        history.pushState(null, null, targetId);
-        
-        // Set focus on target for accessibility
-        targetElement.setAttribute('tabindex', '-1');
-        targetElement.focus({ preventScroll: true });
+        const target = document.querySelector(this.hash);
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+          
+          // Update URL without jumping
+          history.pushState(null, null, this.hash);
+        }
       });
     });
-  }
 
-  /**
-   * Initialize FAQ accordion functionality
-   * Works with Bootstrap's accordion or enhances custom FAQ sections
-   */
-  function initFAQAccordion() {
-    // Check if there's an accordion that's not initialized by Bootstrap
-    const accordionItems = mainElement.querySelectorAll('.accordion-item:not([data-bs-toggle])');
-    
-    if (accordionItems.length === 0) return;
-    
-    accordionItems.forEach(item => {
-      const header = item.querySelector('.accordion-header button');
-      const collapse = item.querySelector('.accordion-collapse');
-      
-      if (!header || !collapse) return;
-      
-      // Initialize if not already handled by Bootstrap
-      if (!header.hasAttribute('data-bs-toggle')) {
-        header.setAttribute('aria-expanded', 'false');
-        
-        header.addEventListener('click', function(e) {
-          e.preventDefault();
-          
-          const isExpanded = this.getAttribute('aria-expanded') === 'true';
-          
-          // Toggle current accordion item
-          this.setAttribute('aria-expanded', !isExpanded);
-          
-          if (isExpanded) {
-            collapse.classList.remove('show');
-            collapse.style.maxHeight = '0px';
-          } else {
-            collapse.classList.add('show');
-            collapse.style.maxHeight = collapse.scrollHeight + 'px';
-          }
-        });
-      }
+    // Bootstrap ScrollSpy initialization
+    const scrollSpy = new bootstrap.ScrollSpy(mainElement, {
+      target: '#toc',
+      offset: 100
     });
   }
 
-  /**
-   * Create and handle "Back to Top" button
-   */
-  function createBackToTopButton() {
-    // Create the button
-    const backToTopBtn = document.createElement('button');
-    backToTopBtn.className = 'back-to-top btn btn-primary rounded-circle';
-    backToTopBtn.setAttribute('aria-label', 'Back to top');
-    backToTopBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 15a.5.5 0 0 0 .5-.5V3.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 3.707V14.5a.5.5 0 0 0 .5.5z"></path></svg>';
-    backToTopBtn.style.cssText = 'position: fixed; bottom: 20px; right: 20px; width: 45px; height: 45px; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; z-index: 1000;';
-    document.body.appendChild(backToTopBtn);
+  // Dynamic Back to Top button
+  function createBackToTop() {
+    const btn = document.createElement('button');
+    btn.className = 'btn btn-primary rounded-circle shadow-lg';
+    btn.style.position = 'fixed';
+    btn.style.bottom = '2rem';
+    btn.style.right = '2rem';
+    btn.style.width = '3.5rem';
+    btn.style.height = '3.5rem';
+    btn.style.display = 'none';
+    btn.innerHTML = '↑';
+    btn.setAttribute('aria-label', 'Back to top');
     
-    // Show/hide button based on scroll position
-    window.addEventListener('scroll', function() {
-      const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-      
-      if (scrollPosition > 300) {
-        backToTopBtn.style.opacity = '1';
-        backToTopBtn.style.visibility = 'visible';
-      } else {
-        backToTopBtn.style.opacity = '0';
-        backToTopBtn.style.visibility = 'hidden';
-      }
+    document.body.appendChild(btn);
+
+    window.addEventListener('scroll', () => {
+      btn.style.display = window.scrollY > 500 ? 'block' : 'none';
     });
-    
-    // Handle button click
-    backToTopBtn.addEventListener('click', function() {
+
+    btn.addEventListener('click', () => {
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
       });
     });
-    
-    // Add RTL support
-    if (mainElement.getAttribute('dir') === 'rtl') {
-      backToTopBtn.style.right = 'auto';
-      backToTopBtn.style.left = '20px';
-    }
   }
 
-  /**
-   * Initialize lightbox for images
-   */
+  // Lightbox image preview
   function initImageLightbox() {
-    const images = mainElement.querySelectorAll('img:not(.no-lightbox)');
+    const images = mainElement.querySelectorAll('img:not(.accordion-image)');
+    const modal = new bootstrap.Modal(document.createElement('div'));
     
-    if (images.length === 0) return;
-    
-    // Create modal elements if not already present
-    if (!document.getElementById('imageLightbox')) {
-      const modalHTML = `
-        <div class="modal fade" id="imageLightbox" tabindex="-1" aria-labelledby="imageLightboxLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content bg-light">
-              <div class="modal-header border-0 p-2">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body text-center p-0">
-                <img src="" class="img-fluid" id="lightboxImage" alt="">
-                <p class="mt-2 text-muted small" id="lightboxCaption"></p>
-              </div>
-            </div>
-          </div>
+    modal._element.className = 'modal fade';
+    modal._element.innerHTML = `
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+          <img class="img-fluid" src="" alt="Enlarged view">
         </div>
-      `;
-      
-      const modalContainer = document.createElement('div');
-      modalContainer.innerHTML = modalHTML;
-      document.body.appendChild(modalContainer.firstElementChild);
-    }
-    
-    // Initialize Bootstrap modal
-    let lightboxModal;
-    
-    // Check if Bootstrap is available
-    if (typeof bootstrap !== 'undefined') {
-      lightboxModal = new bootstrap.Modal(document.getElementById('imageLightbox'));
-    }
-    
-    // Make images clickable
+      </div>
+    `;
+    document.body.appendChild(modal._element);
+
     images.forEach(img => {
-      if (img.parentElement.tagName === 'A') return; // Skip if already wrapped in link
-      
-      img.classList.add('cursor-pointer');
-      img.style.cursor = 'pointer';
-      
-      img.addEventListener('click', function() {
-        const lightboxImg = document.getElementById('lightboxImage');
-        const caption = document.getElementById('lightboxCaption');
-        
-        // Set image source
-        lightboxImg.src = this.src;
-        
-        // Set caption if available (from alt text or figcaption)
-        const figcaption = this.closest('figure') ? this.closest('figure').querySelector('figcaption') : null;
-        caption.textContent = figcaption ? figcaption.textContent : this.alt;
-        
-        // Show modal
-        if (lightboxModal) {
-          lightboxModal.show();
-        } else {
-          // Fallback if Bootstrap is not available
-          document.getElementById('imageLightbox').classList.add('show');
-          document.getElementById('imageLightbox').style.display = 'block';
-        }
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => {
+        modal._element.querySelector('img').src = img.src;
+        modal.show();
       });
     });
   }
 
-  /**
-   * Initialize scroll animations using Intersection Observer
-   */
+  // Section reveal animations
   function initScrollAnimations() {
-    // Check if IntersectionObserver is available
-    if (!('IntersectionObserver' in window)) return;
-    
-    // Elements to animate
-    const elementsToAnimate = mainElement.querySelectorAll('section, .card, blockquote, .alert');
-    
-    // Add initial styles
-    elementsToAnimate.forEach(el => {
-      el.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-    });
-    
-    // Create observer
-    const observer = new IntersectionObserver(entries => {
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-          observer.unobserve(entry.target); // Stop observing once animated
+          entry.target.classList.add('fade-in-visible');
+          observer.unobserve(entry.target);
         }
       });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    });
-    
-    // Observe elements
-    elementsToAnimate.forEach(el => {
+    }, { threshold: 0.1 });
+
+    mainElement.querySelectorAll('.card, section').forEach(el => {
+      el.classList.add('fade-in');
       observer.observe(el);
     });
   }
 
-  /**
-   * Helper function: Safely check for Bootstrap components
-   */
-  function bootstrapComponentExists(componentName) {
-    return typeof bootstrap !== 'undefined' && 
-           typeof bootstrap[componentName] !== 'undefined';
+  // CTA and card enhancements
+  function enhanceInteractiveElements() {
+    // Card hover effects
+    mainElement.querySelectorAll('.card').forEach(card => {
+      card.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-4px)';
+        card.style.boxShadow = '0 8px 24px rgba(0,0,0,0.1)';
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+        card.style.boxShadow = '';
+      });
+    });
+
+    // Initialize Bootstrap popovers
+    mainElement.querySelectorAll('[data-bs-toggle="popover"]').forEach(el => {
+      new bootstrap.Popover(el, {
+        trigger: 'hover focus',
+        container: mainElement
+      });
+    });
   }
+
+  // Initialize all features
+  initSmoothScrolling();
+  createBackToTop();
+  initImageLightbox();
+  initScrollAnimations();
+  enhanceInteractiveElements();
+});
+
+/* Add this CSS to your stylesheet for animations:
+.fade-in { opacity: 0; transform: translateY(20px); transition: all 0.4s ease; }
+.fade-in-visible { opacity: 1; transform: translateY(0); }
+*/
+
+
+
+
+
+
+
+
+
+
+// Enhanced UX effects for Bootstrap-based educational article
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize Bootstrap components
+  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  tooltipTriggerList.map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+
+  // Enhanced smooth scrolling with offset
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.hash);
+      if (target) {
+        const headerOffset = 100;
+        const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  // Image optimization
+  document.querySelectorAll('main img').forEach(img => {
+    img.classList.add('img-fluid', 'rounded', 'shadow-sm');
+    img.style.transition = 'transform 0.3s ease';
+    img.addEventListener('mouseenter', () => img.style.transform = 'scale(1.02)');
+    img.addEventListener('mouseleave', () => img.style.transform = 'scale(1)');
+  });
+
+  // Intersection Observer animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('main section, main .card').forEach(el => {
+    el.style.opacity = 0;
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    observer.observe(el);
+  });
+
+  // CTA hover effects
+  document.querySelectorAll('.alert, .btn-warning').forEach(el => {
+    el.style.transition = 'all 0.2s ease';
+    el.addEventListener('mouseenter', () => {
+      el.style.transform = 'translateY(-2px)';
+      el.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
+    });
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = '';
+      el.style.boxShadow = '';
+    });
+  });
+
+  // Dynamic tooltip positioning
+  window.addEventListener('resize', () => {
+    tooltipTriggerList.forEach(tooltip => bootstrap.Tooltip.getInstance(tooltip).update());
+  });
 });

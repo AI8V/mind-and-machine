@@ -1,191 +1,603 @@
 <!DOCTYPE html>
-<html data-bs-theme="light" lang="ar" dir="rtl">
+<html data-bs-theme="light" lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>دليل Google Maps API</title>
+    <title>1337</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body>
-    <button class="theme-toggle" id="themeToggle">
-        <i class="bi bi-sun-fill"></i>
-        <span>تبديل المظهر</span>
-    </button>
-
-    <main class="container" dir="rtl">
-        <h1 class="fw-bold text-center mt-4">كيفية الحصول على Google Maps API بدون تفعيل الفواتير</h1>
-        <p class="lead text-center text-muted">دليل عملي للحصول على مفتاح Google Maps API مجانًا واستخدامه في تطبيقاتك</p>
-        <div class="row mt-4">
+    <main class="container py-5" lang="ar" dir="rtl">
+        <div class="container text-center mb-5">
+            <h1 class="display-4 mb-3" id="main-title" aria-labelledby="main-title">دليل شامل لتحسين محركات البحث <span class="text-primary">(SEO)</span></h1>
+            <p class="lead text-muted" id="main-description" aria-describedby="main-description">فهم أساسيات تحسين محركات البحث وكيفية استخدامها لتحسين ظهور موقعك الإلكتروني</p>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-8 mx-auto">
+                <div class="card shadow-sm">
+                    <div class="card-header text-white bg-primary">
+                        <h2 class="h5 mb-0">جدول المحتويات</h2>
+                    </div>
+                    <div class="card-body">
+                        <nav class="bg-light list-group p-3 rounded" id="toc" aria-label="جدول المحتويات"><a class="list-group-item list-group-item-action" href="#intro">مقدمة إلى تحسين محركات البحث</a><a class="list-group-item list-group-item-action" href="#seo-tools">أدوات تحسين محركات البحث الأساسية</a><a class="list-group-item list-group-item-action" href="#keyword-tracking">تتبع الكلمات المفتاحية وتحليلها</a><a class="list-group-item list-group-item-action" href="#website-audit">تدقيق وتحسين الموقع الإلكتروني</a><a class="list-group-item list-group-item-action" href="#backlink-analysis">تحليل الروابط الخلفية</a><a class="list-group-item list-group-item-action" href="#link-building">بناء الروابط وإدارتها</a><a class="list-group-item list-group-item-action" href="#career-options">خيارات مهنية في مجال تحسين محركات البحث</a><a class="list-group-item list-group-item-action" href="#money-making">استراتيجيات الربح من تحسين محركات البحث</a><a class="list-group-item list-group-item-action" href="#faq">الأسئلة الشائعة</a></nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section id="intro" class="row mb-5">
             <div class="col-md-12">
-                <p class="lead">من التحديات التي يواجهها المطورون عند استخدام خرائط جوجل هي شروط الدفع على Google Cloud Console. في هذا الدليل، سنتعرف على طريقة بديلة للحصول على مفتاح API لخرائط جوجل واستخدامه في مواقع WordPress والتطبيقات وأي نوع من البرمجيات.</p>
-            </div>
-        </div>
-        <div class="card mb-4">
-            <div class="card-header bg-light">
-                <h3 class="h5 mb-0">جدول المحتويات</h3>
-            </div>
-            <ul class="list-group list-group-flush list-group-flush">
-                <li class="list-group-item"><a href="#create-account">إنشاء حساب في GooMaps.pro</a></li>
-                <li class="list-group-item"><a href="#get-api-key">الحصول على مفتاح API</a></li>
-                <li class="list-group-item"><a href="#using-api">استخدام مفتاح API</a></li>
-                <li class="list-group-item"><a href="#implementation">تنفيذ الخرائط في تطبيقك</a></li>
-                <li class="list-group-item"><a href="#api-features">ميزات API المتاحة</a></li>
-            </ul>
-        </div>
-        <section id="create-account">
-            <h2 class="fw-bold mt-4">إنشاء حساب في GooMaps.pro</h2>
-            <p class="mb-3"> الخطوة الأولى للحصول على مفتاح Google Maps API هي زيارة موقع GooMaps.pro. يمكنك الحصول على الرابط من وصف الفيديو. بمجرد الوصول إلى الموقع: </p>
-            <ul class="list-group mb-4">
-                <li class="list-group-item"><span>انقر على زر "Get Started" لإنشاء حساب جديد</span></li>
-                <li class="list-group-item"><span>قم بإكمال عملية التسجيل</span></li>
-                <li class="list-group-item"><span>بعد إنشاء الحساب، قم بإضافة شركة (Add Company)</span></li>
-                <li class="list-group-item"><span>ثم قم بإضافة مشروع (Add Project)</span></li>
-            </ul>
-        </section>
-        <section id="get-api-key">
-            <h2 class="fw-bold mt-4">الحصول على مفتاح API</h2>
-            <p class="mb-3"> بعد إنشاء المشروع، يمكنك الحصول على مفتاح API باتباع الخطوات التالية: </p>
-            <div class="card shadow-sm mb-3">
-                <div class="card-body">
-                    <h5 class="fw-bold card-title">خطوات إنشاء مفتاح API</h5>
-                    <ol class="card-text">
-                        <li>انتقل إلى قسم "API keys" في لوحة التحكم</li>
-                        <li>انقر على زر إنشاء مفتاح API (Create API key)</li>
-                        <li>أدخل أي اسم تريده لمفتاح API</li>
-                        <li>انقر على "Create API key"</li>
-                        <li>سيظهر مفتاح API الخاص بك، يمكنك النقر على زر "Show" لعرضه</li>
-                        <li>انسخ مفتاح API لاستخدامه في تطبيقك</li>
-                    </ol>
-                </div>
-            </div><blockquote class="blockquote border-start ps-3 border-info">
-      <p>تأتي الحسابات الجديدة مع 5000 طلب مجاني يمكنك استخدامها كتجربة مجانية.</p>
-    </blockquote>
-        </section>
-        <section id="using-api">
-            <h2 class="fw-bold mt-4">استخدام مفتاح API</h2>
-            <p class="mb-3"> الآن بعد أن حصلت على مفتاح API، يمكنك استخدامه في تنفيذات Google Maps. النقطة الأساسية هي استبدال نطاق Google الرسمي بنطاق GooMaps.pro: </p>
-            <div class="alert alert-warning" role="alert"><strong>ملاحظة هامة:</strong><span> بدلاً من استخدام </span><code>maps.googleapis.com</code><span>، يجب عليك استخدام </span><code>maps.goomaps.pro</code></div>
-            <h3 class="fw-bold mt-4">مثال على API لخدمة الاتجاهات</h3>
-            <p class="mb-3"> إليك مثال على استخدام Direction API للحصول على الاتجاهات بين موقعين: </p><pre class="bg-light p-3 rounded mb-4">https://maps.goomaps.pro/maps/api/directions/json?origin=bopal&amp;destination=indor&amp;key=YOUR_API_KEY
-    </pre>
-            <p class="mb-3"> استبدل YOUR_API_KEY بمفتاح API الخاص بك، وستحصل على استجابة تحتوي على معلومات الاتجاهات من bopal إلى indor، تمامًا مثل استجابة Google Maps. </p>
-        </section>
-        <section id="implementation">
-            <h2 class="fw-bold mt-4">تنفيذ الخرائط في تطبيقك</h2>
-            <p class="mb-3"> لعرض الخريطة في تطبيقك، تحتاج إلى تعديل بسيط في الشفرة البرمجية: </p>
-            <div class="card shadow-sm mb-3">
-                <div class="card-body">
-                    <h5 class="fw-bold card-title">تنفيذ عرض الخريطة</h5>
-                    <p class="card-text">عند كتابة كود لتضمين خريطة، يجب عليك:</p>
-                    <ol>
-                        <li>استبدال <code>maps.googleapis.com</code> بـ <code>maps.goomaps.pro</code></li>
-                        <li>إضافة مفتاح API الخاص بك إلى العنوان URL</li>
-                    </ol>
-                </div>
-            </div><pre class="bg-light p-3 rounded mb-4">&lt;script src="https://maps.goomaps.pro/maps/api/js?key=YOUR_API_KEY"&gt;&lt;/script&gt;
-    </pre>
-            <p class="mb-3"> بعد إجراء هذه التغييرات وتنفيذ الكود، ستظهر خريطة Google الرسمية في تطبيقك، مع جميع الميزات الأساسية. </p>
-        </section>
-        <section id="api-features">
-            <h2 class="fw-bold mt-4">ميزات API المتاحة</h2>
-            <p class="mb-3"> تعمل واجهة GooMaps.pro بنفس طريقة عمل Google Maps تمامًا وتوفر الميزات التالية: </p>
-            <ul class="list-group mb-4">
-                <li class="list-group-item"><span>شعار Google وبيانات الاعتماد</span></li>
-                <li class="list-group-item"><span>اقتراحات البحث عند كتابة العناوين</span></li>
-                <li class="list-group-item"><span>عرض الشارع (Street View)</span></li>
-                <li class="list-group-item"><span>جميع واجهات برمجة التطبيقات (APIs) الرئيسية المتوفرة مثل Direction API</span></li>
-            </ul>
-            <div class="alert alert-info text-center" role="alert">
-                <p>يمكنك متابعة استخدام الطلبات من خلال لوحة التحكم الخاصة بك لمعرفة عدد الطلبات التي استخدمتها بالفعل.</p>
-            </div>
-        </section>
-        <section>
-            <div class="alert alert-info text-center mt-4" role="alert"><strong>الخلاصة:</strong><span> باستخدام GooMaps.pro، يمكنك الحصول على مفتاح Google Maps API واستخدامه في تطبيقاتك بدون الحاجة إلى تفعيل الفواتير على Google Cloud Console. تعمل الواجهة تمامًا مثل Google Maps الرسمية وتوفر نفس الميزات الأساسية. </span></div>
-        </section>
-        <section class="mt-5">
-            <h2 class="fw-bold mb-4">الأسئلة الشائعة</h2>
-            <div class="accordion" role="tablist" id="faqAccordion">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" role="tab"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faqAccordion .item-1"> هل استخدام GooMaps.pro آمن لتطبيقاتي؟ </button></h2>
-                    <div class="accordion-collapse collapse show item-1 show" role="tabpanel" data-bs-parent="#faqAccordion" id="faq1">
-                        <div class="accordion-body"><span> نعم، يعمل GooMaps.pro كواجهة لخرائط Google الرسمية، ويظهر شعار Google وبيانات الاعتماد الخاصة بها. يمكنك استخدامه في مواقع WordPress والتطبيقات والبرمجيات المختلفة. </span></div>
+                <div class="card border-primary shadow-sm mb-4" aria-labelledby="intro-title">
+                    <div class="card-header text-white bg-primary">
+                        <h2 id="intro-title" class="h3 mb-0">مقدمة إلى تحسين محركات البحث (SEO)</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>تحسين محركات البحث <span class="badge bg-info" data-bs-toggle="tooltip" data-bss-tooltip="" title="Search Engine Optimization">SEO</span> هو مجموعة من الممارسات المصممة لتحسين ظهور موقع الويب في نتائج محركات البحث مثل Google وBing وYahoo. يهدف تحسين محركات البحث إلى زيادة عدد الزيارات وجودتها من خلال تحسين ترتيب الموقع في نتائج البحث العضوية (غير المدفوعة).</p><blockquote class="blockquote border-warning ps-3 bg-light p-2 rounded" aria-label="حقيقة مهمة">
+                        <p class="mb-0">تحسين محركات البحث ليس عملية لمرة واحدة بل استراتيجية طويلة المدى تتطلب جهدًا مستمرًا وتحديثًا منتظمًا للمحتوى وتحسينًا للتقنيات المستخدمة.</p>
+                    </blockquote>
+                        <p>يتضمن تحسين محركات البحث الفعال عدة جوانب أساسية:</p>
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item"><strong>تحسين داخلي (On-Page SEO)</strong><span>: يتعلق بتحسين محتوى الصفحة وبنية HTML لتحسين الترتيب.</span></li>
+                            <li class="list-group-item"><strong>تحسين خارجي (Off-Page SEO)</strong><span>: يرتبط ببناء سمعة موقعك من خلال الروابط وحضور وسائل التواصل الاجتماعي.</span></li>
+                            <li class="list-group-item"><strong>تحسين تقني (Technical SEO)</strong><span>: يتعلق بتحسين البنية التحتية للموقع لتسهيل فهرسة محركات البحث.</span></li>
+                            <li class="list-group-item"><strong>بحث الكلمات المفتاحية (Keyword Research)</strong><span>: تحديد الكلمات والعبارات التي يبحث عنها جمهورك المستهدف.</span></li>
+                        </ul>
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" role="tab"><button class="accordion-button collapsed collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faqAccordion .item-2"> ما هو عدد الطلبات المجانية التي يمكنني استخدامها؟ </button></h2>
-                    <div class="accordion-collapse collapse item-2" role="tabpanel" data-bs-parent="#faqAccordion" id="faq2">
-                        <div class="accordion-body"><span> يتم تنشيط 5000 طلب مجاني عند إنشاء الحساب. يمكنك متابعة استخدام الطلبات من خلال لوحة التحكم الخاصة بك. </span></div>
+            </div>
+        </section>
+        <section id="seo-tools" class="row mb-5">
+            <div class="col-md-12">
+                <div class="card border-primary shadow-sm mb-4" aria-labelledby="tools-title">
+                    <div class="card-header text-white bg-primary">
+                        <h2 id="tools-title" class="h3 mb-0">أدوات تحسين محركات البحث الأساسية</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>لتنفيذ استراتيجية تحسين محركات البحث بفعالية، يحتاج المتخصصون إلى مجموعة من الأدوات المتخصصة. تتضمن هذه الأدوات الأساسية أربعة مكونات رئيسية:</p>
+                        <div class="row row-cols-1 row-cols-md-2 g-4 mb-4">
+                            <div class="col">
+                                <div class="card h-100 border-info">
+                                    <div class="card-header text-white bg-info">
+                                        <h3 class="h5 mb-0">أداة تتبع الترتيب (Rank Tracker)</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>تساعد على تتبع ترتيب موقعك في محركات البحث للكلمات المفتاحية المستهدفة. توفر تقارير مفصلة تُظهر ترتيب موقعك، وكيف تغير هذا الترتيب مع مرور الوقت، والعوامل التي قد تؤثر على ترتيبك.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card h-100 border-info">
+                                    <div class="card-header text-white bg-info">
+                                        <h3 class="h5 mb-0">أداة تدقيق المواقع (Website Auditor)</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>تقوم بتحليل بنية موقعك ومحتواه، وتبحث عن مشاكل تقنية وفرص تحسين الصفحات. يوفر التدقيق توصيات لتحسين هيكل الموقع والمحتوى والشفرة البرمجية.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card h-100 border-info">
+                                    <div class="card-header text-white bg-info">
+                                        <h3 class="h5 mb-0">أداة تحليل الروابط الخلفية (Backlink Analyzer)</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>تساعدك على فهم ملف الروابط الخلفية لموقعك ومواقع منافسيك. توفر معلومات مفصلة حول الروابط التي تشير إلى موقعك، بما في ذلك نص الرابط ونوع الرابط والمصدر وجودة الروابط.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card h-100 border-info">
+                                    <div class="card-header text-white bg-info">
+                                        <h3 class="h5 mb-0">أداة بناء الروابط (Link Building Assistant)</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>تساعد في بناء روابط خلفية عالية الجودة لموقعك. توفر حلاً شاملاً لبناء الروابط يتضمن ميزات مثل التنقيب عن الروابط المحتملة، والتواصل مع مواقع أخرى، وإدارة الروابط الحالية.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert alert-info" role="alert"><i class="bi bi-info-circle-fill me-2"></i><span> باستخدام هذه الأدوات معًا، يمكنك تحسين ترتيب موقعك في محركات البحث وزيادة حركة المرور العضوية إلى موقعك. </span></div>
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" role="tab"><button class="accordion-button collapsed collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faqAccordion .item-3"> ما هي أنواع واجهات برمجة التطبيقات المتاحة؟ </button></h2>
-                    <div class="accordion-collapse collapse item-3" role="tabpanel" data-bs-parent="#faqAccordion" id="faq3">
-                        <div class="accordion-body"><span> تتوفر جميع واجهات برمجة التطبيقات الرئيسية مثل Direction API، وعرض الخرائط الأساسي، وعرض الشارع (Street View)، وميزات البحث. يمكنك قراءة المزيد عن هذه الواجهات في وثائق الموقع. </span></div>
+            </div>
+        </section>
+        <section id="keyword-tracking" class="row mb-5">
+            <div class="col-md-12">
+                <div class="card border-primary shadow-sm mb-4" aria-labelledby="keyword-title">
+                    <div class="card-header text-white bg-primary">
+                        <h2 id="keyword-title" class="h3 mb-0">تتبع الكلمات المفتاحية وتحليلها</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>تتبع الكلمات المفتاحية <span class="badge bg-info" data-bs-toggle="tooltip" data-bss-tooltip="" title="Keyword Tracking">Keyword Tracking</span> هو عملية مراقبة أداء موقعك في محركات البحث للكلمات المفتاحية المستهدفة. يُعد هذا جانبًا أساسيًا من استراتيجية تحسين محركات البحث لأنه يسمح لك بفهم كيفية عرض موقعك في نتائج البحث وتحديد المجالات التي تحتاج إلى تحسين.</p>
+                        <h3 class="h4 mt-4 mb-3">كيفية تتبع الكلمات المفتاحية بفعالية:</h3>
+                        <div class="card border-secondary mb-3">
+                            <div class="card-body">
+                                <ol class="list-group list-group-numbered">
+                                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-auto ms-2">
+                                            <div class="fw-bold"><span>&nbsp;اختر كلمات مفتاحية مستهدفة</span></div><span> حدد الكلمات المفتاحية ذات الصلة بموقعك والتي يبحث عنها جمهورك المستهدف. </span>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-auto ms-2">
+                                            <div class="fw-bold"><span>&nbsp;تتبع ترتيبك الحالي</span></div><span> استخدم أداة تتبع الترتيب لمعرفة أين يظهر موقعك حاليًا لكل كلمة مفتاحية. </span>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-auto ms-2">
+                                            <div class="fw-bold"><span>&nbsp;مراقبة التغييرات مع مرور الوقت</span></div><span> تتبع كيفية تغير ترتيبك للكلمات المفتاحية مع مرور الوقت والعوامل التي تؤثر عليها. </span>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-auto ms-2">
+                                            <div class="fw-bold"><span>&nbsp;تحليل البيانات</span></div><span> استخدم البيانات لتحديد الكلمات المفتاحية التي يؤدي فيها موقعك بشكل جيد والكلمات التي تحتاج إلى تحسين. </span>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-auto ms-2">
+                                            <div class="fw-bold"><span>&nbsp;تعديل استراتيجيتك</span></div><span> قم بتعديل استراتيجية المحتوى والتحسين الخاصة بك بناءً على نتائج التحليل. </span>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <figure>
+                            <blockquote class="blockquote">
+                                <p class="mb-0">من المهم تتبع أداء الكلمات المفتاحية بانتظام، على سبيل المثال أسبوعيًا أو شهريًا، للبقاء على اطلاع بأي تغييرات في ترتيبات محركات البحث والاستجابة بسرعة لأي انخفاضات في الترتيب.</p>
+                            </blockquote>
+                            <figcaption class="blockquote-footer">لمعرفة المزيد عن تتبع الأداء اضغط على <a href="index.html">الـرابـط الـتـــالـى</a></figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="website-audit" class="row mb-5">
+            <div class="col-md-12">
+                <div class="card border-primary shadow-sm mb-4" aria-labelledby="audit-title">
+                    <div class="card-header text-white bg-primary">
+                        <h2 id="audit-title" class="h3 mb-0">تدقيق وتحسين الموقع الإلكتروني</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>تدقيق الموقع <span class="badge bg-info" data-bs-toggle="tooltip" data-bss-tooltip="" title="Website Audit">Website Audit</span> هو عملية تحليل شاملة لموقعك لتحديد المشكلات التقنية وفرص التحسين. يساعد التدقيق في تحديد العوائق التي تمنع موقعك من تحقيق أفضل أداء ممكن في محركات البحث.</p>
+                        <h3 class="h4 mt-4 mb-3">المكونات الرئيسية لتدقيق الموقع:</h3>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover" aria-describedby="audit-components-description">
+                                <caption class="text-center" id="audit-components-description"><a href="index.html">المكونات الرئيسية لتدقيق الموقع وأهميتها</a></caption>
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th scope="col">العنصر</th>
+                                        <th scope="col">الوصف</th>
+                                        <th scope="col">الأهمية</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>التدقيق التقني</td>
+                                        <td>فحص الجوانب التقنية مثل سرعة الموقع، وملف robots.txt، وخريطة الموقع XML.</td>
+                                        <td>يساعد في ضمان إمكانية زحف محركات البحث وفهرسة موقعك بشكل صحيح.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>تدقيق المحتوى</td>
+                                        <td>تحليل محتوى موقعك للتأكد من أنه ذو جودة عالية ومتوافق مع احتياجات المستخدم.</td>
+                                        <td>يساعد في تحسين تجربة المستخدم وملاءمة المحتوى للكلمات المفتاحية المستهدفة.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>تدقيق تحسين الصفحة</td>
+                                        <td>فحص عناصر تحسين الصفحة مثل العناوين، والوصف، والعلامات الوصفية.</td>
+                                        <td>يساعد في تحسين كيفية فهم محركات البحث لمحتوى صفحاتك.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>تدقيق تجربة المستخدم</td>
+                                        <td>تقييم سهولة استخدام موقعك وتجربة المستخدم الشاملة.</td>
+                                        <td>يساعد في تحسين معدل التحويل ومدة البقاء على الموقع.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>تدقيق الروابط</td>
+                                        <td>فحص الروابط الداخلية والخارجية على موقعك.</td>
+                                        <td>يساعد في تحسين هيكل الموقع وقيمة الروابط.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card text-white bg-info shadow-lg my-4" role="region" aria-label="مثال عملي لتدقيق الموقع">
+                            <div class="card-header">
+                                <h3 class="h5 mb-0">مثال عملي لتدقيق الموقع</h3>
+                            </div>
+                            <div class="card-body">
+                                <p>لنفترض أن تدقيق الموقع كشف عن المشكلات التالية:</p>
+                                <ul>
+                                    <li>صفحات متعددة بدون عناوين وصفية (<span class="badge bg-primary">Technical SEO</span>)</li>
+                                    <li>محتوى مكرر على عدة صفحات (<span class="badge bg-primary">Content</span>)</li>
+                                    <li>روابط داخلية مكسورة (<span class="badge bg-primary">Structure</span>)</li>
+                                    <li>زمن تحميل بطيء للصفحات (<span class="badge bg-primary">Performance</span>)</li>
+                                </ul>
+                                <p>الإجراءات التصحيحية:</p>
+                                <ol>
+                                    <li>إنشاء عناوين فريدة ووصفية لكل صفحة</li>
+                                    <li>إعادة كتابة أو دمج المحتوى المكرر</li>
+                                    <li>إصلاح أو إزالة الروابط المكسورة</li>
+                                    <li>تحسين أداء الموقع عن طريق ضغط الصور وتقليل استخدام JavaScript</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="backlink-analysis" class="row mb-5">
+            <div class="col-md-12">
+                <div class="card border-primary shadow-sm mb-4" aria-labelledby="backlink-title">
+                    <div class="card-header text-white bg-primary">
+                        <h2 id="backlink-title" class="h3 mb-0">تحليل الروابط الخلفية</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>تحليل الروابط الخلفية <span class="badge bg-info" data-bs-toggle="tooltip" data-bss-tooltip="" title="Backlink Analysis">Backlink Analysis</span> هو عملية دراسة الروابط من مواقع أخرى التي تشير إلى موقعك. تُعد الروابط الخلفية عاملاً مهمًا في خوارزميات محركات البحث، حيث يُنظر إليها كتصويت ثقة من موقع إلى آخر.</p>
+                        <h3 class="h4 mt-4 mb-3">فوائد تحليل الروابط الخلفية:</h3>
+                        <ul class="list-group mb-4">
+                            <li class="list-group-item list-group-item-success"><span>فهم ملف الروابط الخلفية لموقعك</span></li>
+                            <li class="list-group-item list-group-item-success"><span>تحديد الروابط الخلفية عالية الجودة التي تساهم في تحسين ترتيبك</span></li>
+                            <li class="list-group-item list-group-item-success"><span>اكتشاف الروابط الخلفية منخفضة الجودة التي قد تضر بترتيبك</span></li>
+                            <li class="list-group-item list-group-item-success"><span>تحليل استراتيجيات الروابط الخلفية للمنافسين</span></li>
+                            <li class="list-group-item list-group-item-success"><span>تحديد فرص بناء روابط جديدة</span></li>
+                        </ul>
+                        <div id="backlinksAccordion" class="accordion accordion-flush mb-4">
+                            <div class="accordion-item">
+                                <h3 class="d-inline-flex accordion-header" id="heading"><button class="flex-row-reverse accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> كيف تقيم جودة الروابط الخلفية؟ </button></h3>
+                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="heading" data-bs-parent="#backlinksAccordion">
+                                    <div class="accordion-body">
+                                        <p>عند تقييم جودة الروابط الخلفية، يجب مراعاة العوامل التالية:</p>
+                                        <ul>
+                                            <li><strong>سلطة الموقع المصدر</strong>: الروابط من المواقع ذات السلطة العالية أكثر قيمة.</li>
+                                            <li><strong>صلة الموقع المصدر</strong>: الروابط من المواقع ذات الصلة بمجالك أكثر قيمة.</li>
+                                            <li><strong>نص الرابط</strong>: النص الذي يحتوي على الرابط (نص الرابط) يجب أن يكون ذا صلة بمحتوى صفحتك.</li>
+                                            <li><strong>موضع الرابط</strong>: الروابط في المحتوى الأساسي أكثر قيمة من الروابط في التذييل أو الشريط الجانبي.</li>
+                                            <li><strong>سمات الرابط</strong>: سمات مثل "nofollow" و"sponsored" و"ugc" تؤثر على كيفية تفسير محركات البحث للرابط.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h3 class="d-inline-flex accordion-header" id="headingTwo"><button class="flex-row-reverse accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> استراتيجيات تحليل روابط المنافسين </button></h3>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#backlinksAccordion">
+                                    <div class="accordion-body">
+                                        <p>يمكن أن يوفر تحليل روابط المنافسين رؤى قيمة لاستراتيجية بناء الروابط الخاصة بك:</p>
+                                        <ol>
+                                            <li>حدد منافسيك الرئيسيين في مجالك.</li>
+                                            <li>استخدم أداة تحليل الروابط الخلفية لفحص ملفات الروابط الخلفية الخاصة بهم.</li>
+                                            <li>حدد المواقع التي تربط بمنافسيك ولكن ليس إلى موقعك.</li>
+                                            <li>قيّم جودة هذه الروابط وصلتها.</li>
+                                            <li>اتصل بالمواقع ذات الصلة والجودة العالية لطلب روابط لموقعك.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h3 class="d-inline-flex accordion-header" id="headingThree"><button class="flex-row-reverse accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"> مراقبة وإدارة الروابط الخلفية </button></h3>
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#backlinksAccordion">
+                                    <div class="accordion-body">
+                                        <p>من المهم مراقبة ملف الروابط الخلفية الخاص بك بانتظام:</p>
+                                        <ul>
+                                            <li>تتبع الروابط الخلفية الجديدة التي يكتسبها موقعك.</li>
+                                            <li>تحديد وإصلاح الروابط المكسورة.</li>
+                                            <li>مراقبة الروابط الخلفية منخفضة الجودة التي قد تضر بترتيبك.</li>
+                                            <li>استخدام أداة تنصل (Disavow Tool) من Google لتنصل من الروابط السامة إذا لزم الأمر.</li>
+                                            <li>تحليل اتجاهات الروابط الخلفية لتقييم نجاح استراتيجية بناء الروابط الخاصة بك.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="link-building" class="row mb-5">
+            <div class="col-md-12">
+                <div class="card border-primary shadow-sm mb-4" aria-labelledby="link-building-title">
+                    <div class="card-header text-white bg-primary">
+                        <h2 id="link-building-title" class="h3 mb-0">بناء الروابط وإدارتها</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>بناء الروابط <span class="badge bg-info" data-bs-toggle="tooltip" data-bss-tooltip="" title="Link Building">Link Building</span> هو عملية اكتساب روابط خلفية من مواقع أخرى إلى موقعك. تعتبر الروابط الخلفية عالية الجودة عاملاً مهمًا في تحديد ترتيب موقعك في نتائج محركات البحث.</p>
+                        <h3 class="text-primary h5 mt-4 mb-3">أهمية LinkAssistant في بناء الروابط</h3>
+                        <div class="card-body">
+                            <div class="card bg-light mb-3">
+                                <div class="card-body">
+                                    <p>أداة <strong>LinkAssistant</strong> مصممة لمساعدة المؤسسات في بناء روابط خلفية عالية الجودة لموقعها. تقدم حلاً شاملاً لبناء الروابط يتضمن ميزات مثل:</p>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item bg-light"><span>البحث عن فرص بناء الروابط </span><span class="text-muted">(Link Prospecting)</span></li>
+                                        <li class="list-group-item bg-light"><span>التواصل مع أصحاب المواقع </span><span class="text-muted">(Link Outreach)</span></li>
+                                        <li class="list-group-item bg-light"><span>إدارة الروابط </span><span class="text-muted">(Link Management)</span></li>
+                                        <li class="list-group-item bg-light"><span>تقارير مفصلة عن نجاح حملات بناء الروابط</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="text-primary h5 mt-4 mb-3">كيفية استخدام LinkAssistant بفعالية</h3>
+                        <ol class="list-group list-group-numbered mb-3 pe-2 me-4 ms-0 ps-0 mt-0 pt-2">
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-auto ms-2">
+                                    <div class="fw-bold"><span>إدخال عنوان URL لموقعك</span></div><span> وبدء حملة بناء الروابط </span>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-auto ms-2">
+                                    <div class="fw-bold"><span>استخدام ميزات البحث عن فرص بناء الروابط</span></div><span> للعثور على شركاء محتملين لبناء الروابط </span>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-auto ms-2">
+                                    <div class="fw-bold"><span>مراقبة نجاح حملات بناء الروابط</span></div><span> وإجراء تغييرات بناءً على النتائج </span>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="alert alert-warning" role="alert">
+                    <div class="d-flex align-items-center"><i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        <div><strong>هام:</strong><span> ركز على بناء روابط خلفية عالية الجودة من مواقع ذات صلة وسلطة لتجنب العقوبات المحتملة من محركات البحث. </span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="border-success shadow-sm card mb-4" id="career-options" aria-labelledby="career-title">
+            <div class="text-white bg-success card-header">
+                <h2 id="career-title" class="h4 mb-0">خيارات مهنية في مجال تحسين محركات البحث</h2>
+            </div>
+            <div class="card-body">
+                <p>يوفر مجال تحسين محركات البحث <span class="badge bg-secondary" data-bs-toggle="tooltip" data-bss-tooltip="" title="تحسين محركات البحث">SEO</span> العديد من الفرص المهنية المجزية. مع تزايد أهمية التواجد الرقمي، أصبح الطلب على متخصصي SEO أكبر من أي وقت مضى.</p>
+                <div class="table-responsive mt-4 mb-4">
+                    <table class="table table-striped table-hover" aria-describedby="career-options-table">
+                        <caption id="career-options-table">متوسط الرواتب لمختلف أدوار SEO (بالدولار الأمريكي)</caption>
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">المسمى الوظيفي</th>
+                                <th scope="col">متوسط الراتب السنوي</th>
+                                <th scope="col">مستوى الخبرة</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>أخصائي SEO <span class="text-muted">(SEO Specialist)</span></td>
+                                <td>$50,000 - $70,000</td>
+                                <td>مبتدئ إلى متوسط</td>
+                            </tr>
+                            <tr>
+                                <td>مدير SEO <span class="text-muted">(SEO Manager)</span></td>
+                                <td>$70,000 - $120,000</td>
+                                <td>متوسط إلى متقدم</td>
+                            </tr>
+                            <tr>
+                                <td>مدير SEO التنفيذي <span class="text-muted">(SEO Director)</span></td>
+                                <td>$120,000 - $160,000</td>
+                                <td>متقدم</td>
+                            </tr>
+                            <tr>
+                                <td>مستشار SEO <span class="text-muted">(SEO Consultant)</span></td>
+                                <td>$75 - $200 (بالساعة)</td>
+                                <td>متوسط إلى متقدم</td>
+                            </tr>
+                            <tr>
+                                <td>مالك وكالة SEO <span class="text-muted">(SEO Agency Owner)</span></td>
+                                <td>متغير</td>
+                                <td>متقدم</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="card h-100 text-white bg-info shadow-lg" role="region" aria-labelledby="us-market">
+                            <div class="card-body">
+                                <h3 id="us-market" class="h5 card-title">سوق الولايات المتحدة</h3>
+                                <p class="card-text">في الولايات المتحدة، يتراوح متوسط راتب أخصائي SEO بين $50,000 و $80,000 سنويًا، بينما يمكن للمتخصصين ذوي الخبرة كسب ما بين $80,000 و $150,000 سنويًا أو أكثر.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 text-white bg-info shadow-lg" role="region" aria-labelledby="uk-market">
+                            <div class="card-body">
+                                <h3 id="uk-market" class="h5 card-title">سوق المملكة المتحدة</h3>
+                                <p class="card-text">في المملكة المتحدة، يتراوح متوسط راتب متخصص SEO بين £25,000 و £35,000 سنويًا، بينما يمكن للمتخصصين ذوي الخبرة كسب ما بين £35,000 و £65,000 سنويًا أو أكثر.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading"><i class="bi bi-lightbulb-fill me-2"></i>ملاحظة مهمة!</h4>
+                    <p>الرواتب المذكورة هي تقديرات عامة وقد تختلف بشكل كبير اعتمادًا على الموقع والخبرة وعوامل أخرى.</p>
+                    <hr>
+                    <p class="mb-0">تذكر أن كسب راتب مرتفع ليس الطريقة الوحيدة لكسب المال مع SEO. يمكنك أيضًا كسب المال من خلال تقديم خدمات SEO للعملاء، أو بدء وكالة SEO خاصة بك، أو إنشاء وبيع دورات أو برامج تعليمية في مجال SEO.</p>
+                </div>
+            </div>
+        </section>
+        <section class="border-info shadow-sm card mb-4" id="money-making" aria-labelledby="strategies-title">
+            <div class="text-white bg-info card-header">
+                <h2 id="strategies-title" class="h4 mb-0">استراتيجيات الربح من تحسين محركات البحث</h2>
+            </div>
+            <div class="card-body">
+                <p>يمكن استخدام مهارات وأدوات تحسين محركات البحث <span class="badge bg-secondary" data-bs-toggle="tooltip" data-bss-tooltip="" title="Search Engine Optimization">SEO</span> لكسب المال بطرق متعددة. إليك بعض الاستراتيجيات الفعالة:</p>
+                <div class="row g-4 mt-2">
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h3 class="h5 card-title"><i class="text-primary bi bi-people-fill me-2"></i>تقديم خدمات SEO للعملاء</h3>
+                                <p class="card-text">استخدم أدوات SEO لمساعدة العملاء على تحسين ترتيب مواقعهم وجذب المزيد من الزيارات لمواقعهم.</p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><span>تقديم تقارير تفصيلية للعملاء</span></li>
+                                    <li class="list-group-item"><span>توفير رؤى قابلة للتنفيذ وتوصيات</span></li>
+                                    <li class="list-group-item"><span>مراقبة التقدم وتقديم تقارير منتظمة</span></li>
+                                </ul>
+                            </div>
+                            <div class="card-footer"><button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="popover" title="نصيحة للمبتدئين" data-bs-content="ابدأ بمشاريع صغيرة لبناء سمعتك قبل التعامل مع العملاء الكبار.">نصيحة للمبتدئين</button></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h3 class="h5 card-title"><i class="text-primary bi bi-building me-2"></i>بدء وكالة SEO</h3>
+                                <p class="card-text">قدم خدمات SEO للمؤسسات في منطقتك المحلية أو عبر الإنترنت لمساعدتها على تحسين ترتيبها في محركات البحث.</p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><span>أنشئ هوية تجارية قوية لوكالتك</span></li>
+                                    <li class="list-group-item"><span>قدم مجموعة متنوعة من خدمات SEO</span></li>
+                                    <li class="list-group-item"><span>بناء فريق من الخبراء المتخصصين</span></li>
+                                </ul>
+                            </div>
+                            <div class="card-footer"><button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="popover" title="متطلبات النجاح" data-bs-content="تحتاج إلى مهارات إدارية وتسويقية بالإضافة إلى خبرة في مجال SEO.">متطلبات النجاح</button></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h3 class="h5 card-title"><i class="text-primary bi bi-mortarboard-fill me-2"></i>تقديم تدريبات وورش عمل SEO</h3>
+                                <p class="card-text">قدم تدريبات وورش عمل للمؤسسات والأفراد لتعليمهم كيفية تحسين ترتيب مواقعهم في محركات البحث.</p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><span>تطوير مناهج تدريبية شاملة</span></li>
+                                    <li class="list-group-item"><span>عقد ورش عمل عبر الإنترنت أو بالحضور الشخصي</span></li>
+                                    <li class="list-group-item"><span>توفير دعم ما بعد التدريب للمتدربين</span></li>
+                                </ul>
+                            </div>
+                            <div class="card-footer"><button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="popover" title="ميزة تنافسية" data-bs-content="قدم دراسات حالة واقعية وأمثلة عملية لتمييز تدريباتك.">ميزة تنافسية</button></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h3 class="h5 card-title"><i class="text-primary bi bi-file-earmark-text me-2"></i>بيع تقارير SEO للمؤسسات</h3>
+                                <p class="card-text">استخدم أدوات SEO لإنشاء تقارير مفصلة للمؤسسات، مما يوفر لهم رؤى قابلة للتنفيذ وتوصيات لتحسين ترتيبها في محركات البحث.</p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><span>تخصيص التقارير حسب احتياجات كل عميل</span></li>
+                                    <li class="list-group-item"><span>تقديم تحليلات منافسين تفصيلية</span></li>
+                                    <li class="list-group-item"><span>توفير استراتيجيات قابلة للتنفيذ</span></li>
+                                </ul>
+                            </div>
+                            <div class="card-footer"><button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="popover" title="قيمة مضافة" data-bs-content="قدم متابعة مجانية قصيرة لمناقشة التقرير وتوضيح أي نقاط.">قيمة مضافة</button></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-warning text-center shadow-lg p-3 rounded mt-4" role="alert">
+                    <h4 class="alert-heading">ملاحظة مهمة</h4>
+                    <p>تحسين محركات البحث ليس استراتيجية للربح السريع، بل يتطلب وقتًا وجهدًا لرؤية النتائج. تحسين محركات البحث هو استراتيجية طويلة المدى ويجب أن تكون مستعدًا لاستثمار الوقت والموارد لرؤية النتائج.</p>
+                </div>
+            </div>
+        </section>
+        <section class="border-warning shadow-sm card mb-4" id="faq" aria-labelledby="faq-title">
+            <div class="text-dark bg-warning card-header">
+                <h2 id="faq-title" class="h4 mb-0">الأسئلة الشائعة حول تحسين محركات البحث</h2>
+            </div>
+            <div class="card-body">
+                <div id="accordionFaq" class="accordion accordion-flush">
+                    <div class="accordion-item">
+                        <h3 class="d-inline-flex accordion-header" id="headingOne"><button class="flex-row-reverse accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"> كم من الوقت يستغرق لرؤية نتائج جهود تحسين محركات البحث؟ </button></h3>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionFaq">
+                            <div class="accordion-body">
+                                <p>يعتمد الوقت اللازم لرؤية نتائج جهود تحسين محركات البحث على عدة عوامل، بما في ذلك:</p>
+                                <ul>
+                                    <li>عمر موقعك وسلطته</li>
+                                    <li>مستوى المنافسة في مجالك</li>
+                                    <li>الكلمات الرئيسية المستهدفة</li>
+                                    <li>نوعية وتكرار المحتوى الذي تنشئه</li>
+                                </ul>
+                                <p>بشكل عام، يمكن أن تستغرق جهود تحسين محركات البحث من 4 إلى 12 شهرًا لتظهر نتائج ملموسة. ومع ذلك، قد تبدأ في رؤية بعض التحسينات في الأشهر الأولى.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="d-inline-flex accordion-header" id="headingTwo"><button class="flex-row-reverse accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> ما هي أفضل طريقة لبدء العمل في مجال تحسين محركات البحث؟ </button></h3>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionFaq">
+                            <div class="accordion-body">
+                                <p>لبدء العمل في مجال تحسين محركات البحث:</p>
+                                <ol>
+                                    <li>تعلم أساسيات SEO من خلال الدورات والمصادر المجانية عبر الإنترنت</li>
+                                    <li>مارس مهاراتك على موقع شخصي أو مدونة</li>
+                                    <li>احصل على شهادات SEO لتعزيز سيرتك الذاتية</li>
+                                    <li>ابدأ بمشاريع صغيرة مجانية أو بأسعار مخفضة لبناء محفظتك</li>
+                                    <li>انضم إلى مجتمعات SEO للتواصل والتعلم من الآخرين</li>
+                                    <li>ابق على اطلاع دائم بأحدث اتجاهات وممارسات SEO</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="d-inline-flex accordion-header" id="headingThree"><button class="flex-row-reverse accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"> ما هي أهم عوامل الترتيب في محركات البحث؟ </button></h3>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionFaq">
+                            <div class="accordion-body">
+                                <p>تشمل أهم عوامل الترتيب في محركات البحث:</p>
+                                <ul>
+                                    <li><strong>جودة المحتوى</strong>: محتوى أصلي وشامل ومفيد للمستخدمين</li>
+                                    <li><strong>الروابط الخلفية</strong>: روابط عالية الجودة من مواقع ذات سلطة وصلة بموضوعك</li>
+                                    <li><strong>تجربة المستخدم</strong>: سرعة التحميل، سهولة التنقل، تصميم متجاوب مع الأجهزة المحمولة</li>
+                                    <li><strong>تحسين الكلمات الرئيسية</strong>: استخدام الكلمات الرئيسية المناسبة في العناوين، المحتوى، والـ meta tags</li>
+                                    <li><strong>الأمان</strong>: استخدام HTTPS وتأمين الموقع</li>
+                                    <li><strong>المعلومات التقنية</strong>: بنية URL، sitemap، ملف robots.txt</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="d-inline-flex accordion-header" id="headingFour"><button class="flex-row-reverse accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour"> كيف يمكنني تحديد أسعار خدمات SEO؟ </button></h3>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionFaq">
+                            <div class="accordion-body">
+                                <p>لتحديد أسعار خدمات SEO، يجب مراعاة العوامل التالية:</p>
+                                <ul>
+                                    <li>مستوى خبرتك ومهاراتك</li>
+                                    <li>نطاق المشروع وتعقيده</li>
+                                    <li>المنافسة في الصناعة المستهدفة</li>
+                                    <li>الوقت والموارد اللازمة</li>
+                                    <li>توقعات العميل ونتائج المرجوة</li>
+                                </ul>
+                                <p>يمكنك اعتماد نماذج التسعير التالية:</p>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>نموذج التسعير</th>
+                                                <th>ملاحظات</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>السعر بالساعة</td>
+                                                <td>مناسب للمشاريع الصغيرة أو الاستشارات ($75-$200 بالساعة)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>سعر شهري ثابت</td>
+                                                <td>مناسب للخدمات المستمرة ($1,000-$5,000+ شهريًا)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>سعر المشروع</td>
+                                                <td>مناسب للمشاريع المحددة ($1,500-$25,000+ بناءً على النطاق)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="d-inline-flex accordion-header" id="headingFive"><button class="flex-row-reverse accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive"> هل لا تزال الروابط الخلفية مهمة لـ SEO في عام 2025؟ </button></h3>
+                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionFaq">
+                            <div class="accordion-body">
+                                <p>نعم، ما زالت الروابط الخلفية تلعب دورًا حاسمًا في تحسين محركات البحث حتى عام 2025، لكن مع بعض التطورات:</p>
+                                <ul class="mb-3">
+                                    <li><strong>الجودة فوق الكمية:</strong> أصبحت محركات البحث أكثر ذكاءً في تقييم جودة الروابط</li>
+                                    <li><strong>السياق والصلاحية:</strong> يجب أن تكون الروابط ذات صلة بمحتوى الصفحة</li>
+                                    <li><strong>التنوع الطبيعي:</strong> تجنب الأنماط المكررة في بناء الروابط</li>
+                                    <li><strong>التركيز على الخبرة (E-E-A-T):</strong> الروابط من مصادر موثوقة تحظى بأولوية أعلى</li>
+                                </ul>
+                                <div class="alert alert-info mt-2" role="alert"><span> نصيحة: ركز على بناء روابط من مصادر ذات سلطة في مجال تخصصك بدلًا من الشراء العشوائي للروابط. </span></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
-    
-    <button class="scroll-to-top" id="scrollToTop">
-        <i class="bi bi-arrow-up"></i>
-        <span>العودة للأعلى</span>
-    </button>
-
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Theme Toggle
-            const themeToggle = document.getElementById('themeToggle');
-            const html = document.documentElement;
-            const icon = themeToggle.querySelector('i');
-            
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            html.setAttribute('data-bs-theme', savedTheme);
-            updateIcon(savedTheme);
-            
-            themeToggle.addEventListener('click', function() {
-                const currentTheme = html.getAttribute('data-bs-theme');
-                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-                
-                html.setAttribute('data-bs-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                updateIcon(newTheme);
-            });
-            
-            function updateIcon(theme) {
-                if (theme === 'light') {
-                    icon.classList.remove('bi-moon-fill');
-                    icon.classList.add('bi-sun-fill');
-                } else {
-                    icon.classList.remove('bi-sun-fill');
-                    icon.classList.add('bi-moon-fill');
-                }
-            }
-
-            // Scroll to Top
-            const scrollToTopBtn = document.getElementById('scrollToTop');
-            
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    scrollToTopBtn.classList.add('visible');
-                } else {
-                    scrollToTopBtn.classList.remove('visible');
-                }
-            });
-
-            scrollToTopBtn.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>
