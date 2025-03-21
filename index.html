@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>دليل Google Maps API</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <button class="theme-toggle" id="themeToggle">
+        <i class="bi bi-sun-fill"></i>
+        <span>تبديل المظهر</span>
+    </button>
+
+    <main class="container" dir="rtl">
+        <h1 class="fw-bold text-center mt-4">كيفية الحصول على Google Maps API بدون تفعيل الفواتير</h1>
+        <p class="lead text-center text-muted">دليل عملي للحصول على مفتاح Google Maps API مجانًا واستخدامه في تطبيقاتك</p>
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <p class="lead">من التحديات التي يواجهها المطورون عند استخدام خرائط جوجل هي شروط الدفع على Google Cloud Console. في هذا الدليل، سنتعرف على طريقة بديلة للحصول على مفتاح API لخرائط جوجل واستخدامه في مواقع WordPress والتطبيقات وأي نوع من البرمجيات.</p>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header bg-light">
+                <h3 class="h5 mb-0">جدول المحتويات</h3>
+            </div>
+            <ul class="list-group list-group-flush list-group-flush">
+                <li class="list-group-item"><a href="#create-account">إنشاء حساب في GooMaps.pro</a></li>
+                <li class="list-group-item"><a href="#get-api-key">الحصول على مفتاح API</a></li>
+                <li class="list-group-item"><a href="#using-api">استخدام مفتاح API</a></li>
+                <li class="list-group-item"><a href="#implementation">تنفيذ الخرائط في تطبيقك</a></li>
+                <li class="list-group-item"><a href="#api-features">ميزات API المتاحة</a></li>
+            </ul>
+        </div>
+        <section id="create-account">
+            <h2 class="fw-bold mt-4">إنشاء حساب في GooMaps.pro</h2>
+            <p class="mb-3"> الخطوة الأولى للحصول على مفتاح Google Maps API هي زيارة موقع GooMaps.pro. يمكنك الحصول على الرابط من وصف الفيديو. بمجرد الوصول إلى الموقع: </p>
+            <ul class="list-group mb-4">
+                <li class="list-group-item"><span>انقر على زر "Get Started" لإنشاء حساب جديد</span></li>
+                <li class="list-group-item"><span>قم بإكمال عملية التسجيل</span></li>
+                <li class="list-group-item"><span>بعد إنشاء الحساب، قم بإضافة شركة (Add Company)</span></li>
+                <li class="list-group-item"><span>ثم قم بإضافة مشروع (Add Project)</span></li>
+            </ul>
+        </section>
+        <section id="get-api-key">
+            <h2 class="fw-bold mt-4">الحصول على مفتاح API</h2>
+            <p class="mb-3"> بعد إنشاء المشروع، يمكنك الحصول على مفتاح API باتباع الخطوات التالية: </p>
+            <div class="card shadow-sm mb-3">
+                <div class="card-body">
+                    <h5 class="fw-bold card-title">خطوات إنشاء مفتاح API</h5>
+                    <ol class="card-text">
+                        <li>انتقل إلى قسم "API keys" في لوحة التحكم</li>
+                        <li>انقر على زر إنشاء مفتاح API (Create API key)</li>
+                        <li>أدخل أي اسم تريده لمفتاح API</li>
+                        <li>انقر على "Create API key"</li>
+                        <li>سيظهر مفتاح API الخاص بك، يمكنك النقر على زر "Show" لعرضه</li>
+                        <li>انسخ مفتاح API لاستخدامه في تطبيقك</li>
+                    </ol>
+                </div>
+            </div><blockquote class="blockquote border-start ps-3 border-info">
+      <p>تأتي الحسابات الجديدة مع 5000 طلب مجاني يمكنك استخدامها كتجربة مجانية.</p>
+    </blockquote>
+        </section>
+        <section id="using-api">
+            <h2 class="fw-bold mt-4">استخدام مفتاح API</h2>
+            <p class="mb-3"> الآن بعد أن حصلت على مفتاح API، يمكنك استخدامه في تنفيذات Google Maps. النقطة الأساسية هي استبدال نطاق Google الرسمي بنطاق GooMaps.pro: </p>
+            <div class="alert alert-warning" role="alert"><strong>ملاحظة هامة:</strong><span> بدلاً من استخدام </span><code>maps.googleapis.com</code><span>، يجب عليك استخدام </span><code>maps.goomaps.pro</code></div>
+            <h3 class="fw-bold mt-4">مثال على API لخدمة الاتجاهات</h3>
+            <p class="mb-3"> إليك مثال على استخدام Direction API للحصول على الاتجاهات بين موقعين: </p><pre class="bg-light p-3 rounded mb-4">https://maps.goomaps.pro/maps/api/directions/json?origin=bopal&amp;destination=indor&amp;key=YOUR_API_KEY
+    </pre>
+            <p class="mb-3"> استبدل YOUR_API_KEY بمفتاح API الخاص بك، وستحصل على استجابة تحتوي على معلومات الاتجاهات من bopal إلى indor، تمامًا مثل استجابة Google Maps. </p>
+        </section>
+        <section id="implementation">
+            <h2 class="fw-bold mt-4">تنفيذ الخرائط في تطبيقك</h2>
+            <p class="mb-3"> لعرض الخريطة في تطبيقك، تحتاج إلى تعديل بسيط في الشفرة البرمجية: </p>
+            <div class="card shadow-sm mb-3">
+                <div class="card-body">
+                    <h5 class="fw-bold card-title">تنفيذ عرض الخريطة</h5>
+                    <p class="card-text">عند كتابة كود لتضمين خريطة، يجب عليك:</p>
+                    <ol>
+                        <li>استبدال <code>maps.googleapis.com</code> بـ <code>maps.goomaps.pro</code></li>
+                        <li>إضافة مفتاح API الخاص بك إلى العنوان URL</li>
+                    </ol>
+                </div>
+            </div><pre class="bg-light p-3 rounded mb-4">&lt;script src="https://maps.goomaps.pro/maps/api/js?key=YOUR_API_KEY"&gt;&lt;/script&gt;
+    </pre>
+            <p class="mb-3"> بعد إجراء هذه التغييرات وتنفيذ الكود، ستظهر خريطة Google الرسمية في تطبيقك، مع جميع الميزات الأساسية. </p>
+        </section>
+        <section id="api-features">
+            <h2 class="fw-bold mt-4">ميزات API المتاحة</h2>
+            <p class="mb-3"> تعمل واجهة GooMaps.pro بنفس طريقة عمل Google Maps تمامًا وتوفر الميزات التالية: </p>
+            <ul class="list-group mb-4">
+                <li class="list-group-item"><span>شعار Google وبيانات الاعتماد</span></li>
+                <li class="list-group-item"><span>اقتراحات البحث عند كتابة العناوين</span></li>
+                <li class="list-group-item"><span>عرض الشارع (Street View)</span></li>
+                <li class="list-group-item"><span>جميع واجهات برمجة التطبيقات (APIs) الرئيسية المتوفرة مثل Direction API</span></li>
+            </ul>
+            <div class="alert alert-info text-center" role="alert">
+                <p>يمكنك متابعة استخدام الطلبات من خلال لوحة التحكم الخاصة بك لمعرفة عدد الطلبات التي استخدمتها بالفعل.</p>
+            </div>
+        </section>
+        <section>
+            <div class="alert alert-info text-center mt-4" role="alert"><strong>الخلاصة:</strong><span> باستخدام GooMaps.pro، يمكنك الحصول على مفتاح Google Maps API واستخدامه في تطبيقاتك بدون الحاجة إلى تفعيل الفواتير على Google Cloud Console. تعمل الواجهة تمامًا مثل Google Maps الرسمية وتوفر نفس الميزات الأساسية. </span></div>
+        </section>
+        <section class="mt-5">
+            <h2 class="fw-bold mb-4">الأسئلة الشائعة</h2>
+            <div class="accordion" role="tablist" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" role="tab"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faqAccordion .item-1"> هل استخدام GooMaps.pro آمن لتطبيقاتي؟ </button></h2>
+                    <div class="accordion-collapse collapse show item-1 show" role="tabpanel" data-bs-parent="#faqAccordion" id="faq1">
+                        <div class="accordion-body"><span> نعم، يعمل GooMaps.pro كواجهة لخرائط Google الرسمية، ويظهر شعار Google وبيانات الاعتماد الخاصة بها. يمكنك استخدامه في مواقع WordPress والتطبيقات والبرمجيات المختلفة. </span></div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" role="tab"><button class="accordion-button collapsed collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faqAccordion .item-2"> ما هو عدد الطلبات المجانية التي يمكنني استخدامها؟ </button></h2>
+                    <div class="accordion-collapse collapse item-2" role="tabpanel" data-bs-parent="#faqAccordion" id="faq2">
+                        <div class="accordion-body"><span> يتم تنشيط 5000 طلب مجاني عند إنشاء الحساب. يمكنك متابعة استخدام الطلبات من خلال لوحة التحكم الخاصة بك. </span></div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" role="tab"><button class="accordion-button collapsed collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faqAccordion .item-3"> ما هي أنواع واجهات برمجة التطبيقات المتاحة؟ </button></h2>
+                    <div class="accordion-collapse collapse item-3" role="tabpanel" data-bs-parent="#faqAccordion" id="faq3">
+                        <div class="accordion-body"><span> تتوفر جميع واجهات برمجة التطبيقات الرئيسية مثل Direction API، وعرض الخرائط الأساسي، وعرض الشارع (Street View)، وميزات البحث. يمكنك قراءة المزيد عن هذه الواجهات في وثائق الموقع. </span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <button class="scroll-to-top" id="scrollToTop">
+        <i class="bi bi-arrow-up"></i>
+        <span>العودة للأعلى</span>
+    </button>
+
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme Toggle
+            const themeToggle = document.getElementById('themeToggle');
+            const html = document.documentElement;
+            const icon = themeToggle.querySelector('i');
+            
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            html.setAttribute('data-bs-theme', savedTheme);
+            updateIcon(savedTheme);
+            
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = html.getAttribute('data-bs-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                
+                html.setAttribute('data-bs-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateIcon(newTheme);
+            });
+            
+            function updateIcon(theme) {
+                if (theme === 'light') {
+                    icon.classList.remove('bi-moon-fill');
+                    icon.classList.add('bi-sun-fill');
+                } else {
+                    icon.classList.remove('bi-sun-fill');
+                    icon.classList.add('bi-moon-fill');
+                }
+            }
+
+            // Scroll to Top
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.classList.add('visible');
+                } else {
+                    scrollToTopBtn.classList.remove('visible');
+                }
+            });
+
+            scrollToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
